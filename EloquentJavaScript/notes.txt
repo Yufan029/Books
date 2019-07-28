@@ -39,13 +39,25 @@ Chapter 4
     Data Structures: Objects and Arrays
 
 
-  When getting the property of an object:
-    the word after the dot is the literal name of the property.
-    the word in the [] is an expression, it will be evaluted to get the proerty name.
+When getting the property of an object:
+  the word after the dot is the literal name of the property.
+  the word in the [] is an expression, it will be evaluted to get the proerty name.
 
-    (1)
-      "string".length (length is the literal name of the property).
+  (1)
+    "string".length (length is the literal name of the property).
     
-    (2)
+  (2)
     let l = "length";
     "string"[l]   (evalute expression "l" first to get the property name)
+
+  property in anObject
+
+To find out what properties an object has:
+  console.log(Object.keys({x: 0, y: 0, z: 2}));
+  // -> ["x", "y", "z"]
+
+copies all properties from one object into another:
+  let objectA = {a: 1, b: 2};
+  Object.assign(objectA, {b: 3, c: 4});
+  console.log(objectA);
+  // -> {a: 1, b: 3, c: 4}
