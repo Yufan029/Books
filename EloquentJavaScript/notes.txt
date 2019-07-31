@@ -33,6 +33,7 @@ console.log(findSolution(24));
 Pure function
     vlaue-produce function has no side effects, not rely on side effects from other code.
     Same arguments, same results.
+    does not modify the array it is given.
 
 
 Chapter 4
@@ -61,3 +62,107 @@ copies all properties from one object into another:
   Object.assign(objectA, {b: 3, c: 4});
   console.log(objectA);
   // -> {a: 1, b: 3, c: 4}
+
+compare objects:
+  == operator -> it compares by identity:
+      it will produce true only if both objects are precisely the same vlaue.
+
+
+ϕ =	n11n00 − n10n01 / √ n1•n0•n•1n•0
+
+Rest parameters
+    ... (three dots used as when define a function);
+
+Spread operator
+    ... (three dots used when calling a function, spread out the array into the function call)
+
+Destructuring 解构
+    function phi([n00, n01, n10, n11]),  phi([2, 3, 5, 3])
+    let [n1, n2, n3] = [1, 2, 3]
+    let {name} = {name: 'allen', age: '33'};
+
+chapter 4 exercise 
+  A list
+
+// Your code here.
+function arrayToList(arr) {
+  if (arr.length === 1) {
+    return {value: arr[0], rest: null};
+  } else {
+    return {value: arr[0], rest: arrayToList(arr.slice(1))}
+  }
+}
+
+function listToArray(list) {
+  let arr = [];
+  while (list != null) {
+    arr.push(list.value);
+    list = list.rest;
+  }
+  return arr;
+}
+
+function prepend(element, list) {
+  return {value: element, rest: list};
+}
+
+// non-recursive version of nth
+function testnth(list, number) {
+  let arr = listToArray(list);
+  if (arr.length < number) {
+    return undefined;
+  } else {
+    return arr[number];
+  }    
+}
+
+function nth(list, number) {
+  if (list == null) {
+    return undefined;
+  } else if (number === 0) {
+	  return list.value;
+  } else {
+	  return nth(list.rest, --number);
+  }
+}
+
+// testing data
+console.log(arrayToList([10, 20]));
+// → {value: 10, rest: {value: 20, rest: null}}
+console.log(listToArray(arrayToList([10, 20, 30])));
+// → [10, 20, 30]
+console.log(prepend(10, prepend(20, null)));
+// → {value: 10, rest: {value: 20, rest: null}}
+console.log(nth(arrayToList([10, 20, 30]), 2));
+// → 20
+
+Objects can use === to compare, return true when they are the same object.
+
+
+
+
+Chapter 5
+Higher-order function
+
+Functions that operator on other functions, either by taking them as arguments or by returning them, are called higher-order functions.
+
+The term comes form mathematics.  
+// 高阶函数
+//   接受一个或多个函数作为输入
+//   输出一个函数
+
+Higher-order functions allow us to abstract over actions, not just values.
+
+  (1) functions that create new functions.
+
+    function greaterThan(n) {
+      return m => m > n;
+    }
+
+    let greaterThan11 = greaterThan(11);
+    greaterThan11(15);
+    // -> true;
+
+
+  (2) functions that change other functions.
+  (3) functions that provide new types of control flow.
