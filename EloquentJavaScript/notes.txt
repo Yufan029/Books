@@ -1,3 +1,6 @@
+Chapter 1
+String are encoded as a sequence of 16-bit numbers. These are called code units.
+
 Chapter 3 Function
 
 Closure
@@ -166,3 +169,41 @@ Higher-order functions allow us to abstract over actions, not just values.
 
   (2) functions that change other functions.
   (3) functions that provide new types of control flow.
+
+
+
+UTF-16
+  - the format used by JavaScript strings.
+  - most common characters using a single 16-bit code unit but uses a pair of two such units for others.
+  - considered a bad idea today.
+
+
+charCodeAt()
+  - gives you a code unit, not a full character code.
+
+fromCharCode()
+
+
+codePointAt()
+  - give a full Unicode character.
+  - the argument, still an index into the seqence of code units.
+  - still need to deal with the question of whether a character takes up one or two code units.
+
+fromCodePoint()
+
+
+findIndex(given function)
+  - like indexOf, but instead of looking for a specific value, it finds the first value for which the given function returns true.
+
+
+Higher-Order function for Array:
+  forEach, filter, map, reduce, some, findIndex
+
+concat()
+  - create a new array that connect two or more arrays together
+
+push() 
+  - push the element or array into the original one
+  - return the length of the array.
+
+
