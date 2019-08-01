@@ -197,7 +197,7 @@ findIndex(given function)
 
 
 Higher-Order function for Array:
-  forEach, filter, map, reduce, some, findIndex
+  forEach, filter, map, reduce, some, findIndex, every 
 
 concat()
   - create a new array that connect two or more arrays together
