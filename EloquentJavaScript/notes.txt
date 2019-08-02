@@ -207,3 +207,24 @@ push()
   - return the length of the array.
 
 
+Chapter 6 The Secret Life of Objects
+
+Separating interface from implementation is a great idea. Usually called encapsulation.
+
+Arrow function 
+  - they do not bind their own 'this' but can see the 'this' binding of the scope around them.
+  - doesn't have its own 'this' binding.
+
+Prototype
+  - another object that is used as a fallback source of properties.
+
+Object.getPrototypeOf()
+Object.create(prototype)
+  - create an object with a specific prototype
+
+put the keyword 'new' in front of a function call, the function is treated as a constructor.
+
+When create an object based on 'new' operator, object'prototype === constructor's prototype
+
+All function, when create automatically get a proerty named prototype, default value is {}, derived from Object.prototype.
+
