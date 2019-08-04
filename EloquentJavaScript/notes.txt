@@ -228,3 +228,7 @@ When create an object based on 'new' operator, object'prototype === constructor'
 
 All function, when create automatically get a proerty named prototype, default value is {}, derived from Object.prototype.
 
+Class
+  - is constructor + prototype property.
+
+Class declarations currently(2019/08) allow only methods. For now, you can create such properties by directly manipulating the prototype after you've defined the class.
