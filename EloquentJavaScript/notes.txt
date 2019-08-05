@@ -222,6 +222,9 @@ Object.getPrototypeOf()
 Object.create(prototype)
   - create an object with a specific prototype
 
+const aa = new bb();
+  - Object.getPrototypeOf(aa) === bb.prototype === aa.__proto__;
+
 put the keyword 'new' in front of a function call, the function is treated as a constructor.
 
 When create an object based on 'new' operator, object'prototype === constructor's prototype
@@ -265,3 +268,16 @@ console.log(okIterator.next());
 // → {value: "K", done: false}
 console.log(okIterator.next());
 // → {value: undefined, done: true}
+
+
+Inside a class declaration, methods that have 'static' written before their name are stored on the constructor.
+
+encapsulation and polymorphism can be used to separate pieces of code from each other, reducing the tangledness of the overall program, inheritance fundamentally ties classes together, creating more tangle.
+
+Inheritance shouldn't be the first tool you reach for.
+
+instanceof
+  - know whether an object was derived from a specific class.
+  - console.log([1] instanceof Array)
+  - // -> true
+
