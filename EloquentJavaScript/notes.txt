@@ -232,3 +232,36 @@ Class
   - is constructor + prototype property.
 
 Class declarations currently(2019/08) allow only methods. For now, you can create such properties by directly manipulating the prototype after you've defined the class.
+
+Create an object with no prototype:
+  - Object.create(null)
+
+Object.keys() / (object).hasOwnProperty() / (proterty) in (object)
+
+Symbol
+  - unique
+  - usable as property names
+  - suitable for defining interfaces that can peacefully live alongside other properties.
+
+Object used in for/of loop:
+  - iterable.
+    - means that it has a method named with the "Symbol.iterator" symbol.
+      - a symbol defined by JS language, and stored as a property of the "Symbol" function.
+
+this method (Symbol.iterator) returns an object that provides "iterator" (another interface).
+
+iterator
+  - next (return an object, which has property named 'value' and 'done')
+    - value
+    - done
+
+
+字符串“OK”，有个名字为Symbol.iterator()的方法，返回一个iterator，这个iterator有next方法，返回遍历的对象，这个对象有value和done两个properties。
+
+let okIterator = "OK"[Symbol.iterator]();
+console.log(okIterator.next());
+// → {value: "O", done: false}
+console.log(okIterator.next());
+// → {value: "K", done: false}
+console.log(okIterator.next());
+// → {value: undefined, done: true}
