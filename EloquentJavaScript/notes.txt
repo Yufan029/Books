@@ -281,3 +281,10 @@ instanceof
   - console.log([1] instanceof Array)
   - // -> true
 
+
+iterable - implement the method named 'Symbol.iterator', which return 'iterator', which return {value: *, done: true/false};
+
+array-like - index & length;
+
+Array.from(obj[, mapFn, thisArg])
+  - turn iterable or array-like object to real Array.
