@@ -288,3 +288,9 @@ array-like - index & length;
 
 Array.from(obj[, mapFn, thisArg])
   - turn iterable or array-like object to real Array.
+
+
+Chapter 7 Project: A Robot
+
+  Reflexively writing classes for every concept in your application tends to leave you with a collection of interconnected objects that each have their own internal, changing state.
+  Such programs are often hard to understand and thus easy to break;
