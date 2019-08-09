@@ -292,5 +292,9 @@ Array.from(obj[, mapFn, thisArg])
 
 Chapter 7 Project: A Robot
 
-  Reflexively writing classes for every concept in your application tends to leave you with a collection of interconnected objects that each have their own internal, changing state.
-  Such programs are often hard to understand and thus easy to break;
+Reflexively writing classes for every concept in your application tends to leave you with a collection of interconnected objects that each have their own internal, changing state.
+
+Such programs are often hard to understand and thus easy to break;
+
+the most important limit on what kind of systems we can build is how much we can understand.
+Anything that makes your code easier to understand makes it possible to build a more ambitious system.
