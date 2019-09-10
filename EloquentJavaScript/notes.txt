@@ -300,3 +300,106 @@ Such programs are often hard to understand and thus easy to break;
 
 the most important limit on what kind of systems we can build is how much we can understand.
 Anything that makes your code easier to understand makes it possible to build a more ambitious system.
+
+
+Chapter 9 Regular expression
+
+
+Date
+  - month start at 0
+  - day   start at 1
+
+new Date().getTime()
+  - return the timestamps (milliseconds since 1970)
+
+Date.now()
+  - return the timestamps
+
+^ - match the start of the string
+  - To invert a set of characters.
+      (1). to express that you want to match any character except the ones in the set - you can write a caret (^) character after the opening bracket.
+          e.g.
+              let notBinary = /[^01]/;
+              console.log(notBinary.test('1110010101001')); // false;
+              console.log(notBinary.test('110201010140'));  // true;
+      (2). A string of character enclosed in square bracket [] matches any one character in that string.
+          If the first character in the bracket is a caret ^, it matches any character except those in the string.
+          e.g.
+            For example, [abc] matches a, b, or c, but not x, y, or z. However, [^abc] matches x, y, or z, but not a, b, or c.
+      (3). The caret serves two different purposes. It is a special character that denotes “the beginning of a line” and it is a “not” operator inside of []s.
+      (4). **** we can use [^] as a way to match any character.
+    
+$ - match the end of the string
+
+\d - digit character
+\w - alphanumeric character ("word charactor")
+\s - whitespace character
+\b - word boundary (beginning position or end position of a string, or a position between \w and \W), it's a position!
+
+Choise pattern
+  | - let animal = /\b\d+ (pig|cow|chicken)s?\b/
+      console.log(animal.test("15 pigs")); // --> true;
+
+
+replace
+  - 'papa'.replace('p', 'm');
+  - 'Borobudur'.replace(/[ou]/g, 'a');
+  - 'Liskov, Barbara\nMcCarthy, John\nWadler, Philip'.replace(/(\w+), (\w+)/g, '$2 $1');
+  - 'the cia and fbi'.replace(/\b(fbi|cia)\b/g, str=>str.toUpperCase());
+
+  - function minusOne(match, amount, unit) {
+      amout = Number(amount) - 1;
+      if (amount == 1) {
+        unit = unit.split(0, unit.length-1);
+      } else if (amount == 0) {
+        amount = 'no';
+      }
+      return amount + ' ' + unit;
+  }
+
+  - '1 lemon, 2 cabbages, and 101 eggs'.replace(/(\d+) (\w+)/g, minusOne);
+    // the first parameter is the whole match, the second parameter(amount) is the first matched group, the third parameter(unit) is the second matched group;
+
+  - remove all comments from JS code.
+    function stripComments(code) {
+      return code.replace(/\/\/.*|\/\*[^]*?\*\//g, '');     // question mark change the reg to nongreedy version.
+    }
+
+    We use [^] as a way to match any character between '/*' and '*/'.
+    We are not using . (period), because period character does not match newline characters.
+
+Because of backtracking, we say the repetition operators (+, *, ? {}) are greedy, they match as much as they can and backtrack from there.
+If you put a qustion mark after them (+?, *?, ??, {}?), they become nongreedy and start by matching as little as possible.
+
+Difference between /g (global) and /y (sticky)
+  - /y the match will succeed only if it starts directly at lastIndex,
+
+  e.g.
+    let sticky = /abc/y;
+    console.log(sticky.lastIndex); // ===> 0
+    console.log(sticky.exec('xyz abc')); // ===> null
+    sticky.lastIndex = 4;
+    console.log(sticky.exec('xyz abc')); // ===> ['abc']
+
+When can we use 'lastIndex' to determine the position to match?
+  (1). regular expression has /g or /y
+  (2). use exec method.
+
+
+When using SHARED REGEXP (!!!with Global option!!!) for multiple exec calls, these automatically updates to the lastIndex property can cause problems.
+
+e.g.
+    let digit = /\d/g;
+    console.log(digit.exec('here it it: 1'));      // =====> ["1"]
+    console.log(digit.lastIndex);                  // =====> 13
+
+    console.log(digit.exec('and now: 1'));         // =====> null
+    console.log(digit.lastIndex);                  // =====> 0
+
+this is the actual confusing point!!!  (global option);
+
+Be cautious with global regular expressions.
+
+two circumstances to use /g option:
+  (1). replace
+  (2). explicitly use lastIndex
