@@ -403,3 +403,10 @@ Be cautious with global regular expressions.
 two circumstances to use /g option:
   (1). replace
   (2). explicitly use lastIndex
+
+user regex /\r?\n/ to split specific string both '\n' and '\r\n' between lines.
+
+copy assignment is pass by reference!!!
+let result = {}
+let section = result; // point to the same place in the memory;
+section = result[match[1]]     // reassign section make it to point to a new place.
