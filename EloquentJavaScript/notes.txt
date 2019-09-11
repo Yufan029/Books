@@ -332,7 +332,7 @@ Date.now()
 $ - match the end of the string
 
 \d - digit character
-\w - alphanumeric character ("word charactor")
+\w - alphanumeric character ("word charactor": abc..., 123..., _'underscore character')
 \s - whitespace character
 \b - word boundary (beginning position or end position of a string, or a position between \w and \W), it's a position!
 
