@@ -410,3 +410,24 @@ copy assignment is pass by reference!!!
 let result = {}
 let section = result; // point to the same place in the memory;
 section = result[match[1]]     // reassign section make it to point to a new place.
+
+
+Chapter 10 Modules
+
+What do we need for a module system?
+  - It wraps the code in a function value so that it gets its own scope and won't do odd things with other scopes.
+  - We can wrap the module's code in a function and use that function's scope as modue scope.
+
+CommonJS
+  - const {parse} = require("ini");
+  - exports.interfaceNameToExports = Function() {...}
+
+the CommonJS, since
+  (1) the things you add to exports are not available in the local scope
+  (2) hard to determine the dependencies of a module without running its code.
+
+So ===> ECMAScript Modules
+  - This is why the JavaScript standard from 2015 introduces its own, different module system.
+  - ES modules (ES stand for ECMAScript)
+
+
