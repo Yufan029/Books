@@ -429,5 +429,55 @@ the CommonJS, since
 So ===> ECMAScript Modules
   - This is why the JavaScript standard from 2015 introduces its own, different module system.
   - ES modules (ES stand for ECMAScript)
+    e.g.
+      import ordinal from "ordinal";                // without braces, you get its default binding.
+      import {days, months} from "date-names";
+
+      export function formateDate(date, format) { ... }
+
+An ES module's interface is not a single value but a set of named bindings.
+
+When you import another module, you import the binding, not the value, which means an exporting module may change the value of the binding at any time, and the modules that import it will see its new vlaue.
+
+When there is a binding named default, it is treated as the module's main exported value.
+
+without braces when import:
+  - If you import module like 'ordinal' in the previous example, without braces around the binding name, you get its 'default' binding.
+  - Such module can still export other bindings under different names alongside their 'default' export.
+
+Create the 'default' export:
+  - export default ['winter', 'summer']
+
+Rename imported bindings
+  - import {days as dayNames} from 'date-names';
 
 
+Differences between CommonJS and ES modules
+  - ES module imports happen before a module's script starts running.
+  - That means 'import' declarations may not appear inside functions or blocks, and the names of dependencies must be quoted strings, not arbitrary expressions.
+
+
+Right now two module systems (CommonJS and ES modules) are used side by side, it's useful to be able to read and write code in either of them.
+
+
+bundlers
+  - since fetching a single big file tends to be faster than fetching a lot of tiny ones through web.
+  - so web devs have started using tools that roll their grograms (which they painstakingly split into modules) back into a single big file before they publish it to the Web.
+  - Such tools are called bundlers.
+    e.g. 
+      webpack
+
+also
+
+minifiers
+  - not only the number of the transferred files matters, size as well.
+  - so, there are tools to remove the comments, whitespaces, renaming bindings etc.
+  - Such tools are called minifiers
+
+So, it is common that you will find the code in an NPM package or that runs on web page to have gone through multiple stages, like:
+  - convert modern JS to historic JS              // babel
+  - change from ES module format to CommonJS
+  - bundled and minified.
+
+Keep in mind:
+  - the JS code you run is often not the code as it was written.
